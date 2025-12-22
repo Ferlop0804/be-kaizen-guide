@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Play, ChevronRight } from "lucide-react";
 import heroIllustration from "@/assets/hero-illustration.png";
+import Logo from "./Logo";
 
 const Hero = () => {
   return (
@@ -32,14 +33,7 @@ const Hero = () => {
 
             {/* Logo/Title */}
             <div className="animate-fade-in animation-delay-100">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center shadow-glow">
-                  <span className="text-2xl font-bold text-primary-foreground font-heading">BK</span>
-                </div>
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-heading">
-                  <span className="gradient-text">Be Kaizen</span>
-                </h1>
-              </div>
+              <Logo size="lg" showText={true} />
             </div>
 
             {/* Tagline */}
