@@ -1,9 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
-
 const CTA = () => {
-  return (
-    <section className="py-24 relative overflow-hidden">
+  return <section className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="relative rounded-3xl overflow-hidden">
           {/* Background */}
@@ -11,14 +9,11 @@ const CTA = () => {
           <div className="absolute inset-0 bg-hero-glow opacity-50" />
           
           {/* Grid pattern */}
-          <div 
-            className="absolute inset-0 opacity-[0.05]"
-            style={{
-              backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px),
+          <div className="absolute inset-0 opacity-[0.05]" style={{
+          backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px),
                                linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
-              backgroundSize: '40px 40px'
-            }}
-          />
+          backgroundSize: '40px 40px'
+        }} />
 
           {/* Content */}
           <div className="relative z-10 py-20 px-8 text-center">
@@ -26,9 +21,7 @@ const CTA = () => {
               ¿Listo para Transformar tu{" "}
               <span className="gradient-text">Mejora Continua?</span>
             </h2>
-            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Únete a más de 500 empresas que ya están optimizando sus procesos con Be Kaizen.
-            </p>
+            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">Únete a las empresas que ya están optimizando sus procesos con Be Kaizen.</p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button variant="hero" size="xl">
                 Agenda una Demo Gratis
@@ -41,8 +34,6 @@ const CTA = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default CTA;

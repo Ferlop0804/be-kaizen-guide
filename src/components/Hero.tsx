@@ -2,22 +2,17 @@ import { Button } from "@/components/ui/button";
 import { Play, ChevronRight } from "lucide-react";
 import heroIllustration from "@/assets/hero-illustration.png";
 import Logo from "./Logo";
-
 const Hero = () => {
-  return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+  return <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background glow effect */}
       <div className="absolute inset-0 bg-hero-glow pointer-events-none" />
       
       {/* Grid pattern overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `linear-gradient(hsl(var(--primary) / 0.3) 1px, transparent 1px),
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+      backgroundImage: `linear-gradient(hsl(var(--primary) / 0.3) 1px, transparent 1px),
                            linear-gradient(90deg, hsl(var(--primary) / 0.3) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
-        }}
-      />
+      backgroundSize: '60px 60px'
+    }} />
 
       <div className="container mx-auto px-6 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -25,10 +20,7 @@ const Hero = () => {
           <div className="space-y-8">
             {/* Badge */}
             <div className="animate-fade-in">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                Potenciado por IA
-              </span>
+              
             </div>
 
             {/* Logo/Title */}
@@ -80,16 +72,10 @@ const Hero = () => {
           {/* Right illustration */}
           <div className="relative animate-fade-in animation-delay-200 hidden lg:block">
             <div className="absolute inset-0 bg-gradient-radial from-primary/20 via-transparent to-transparent blur-3xl" />
-            <img 
-              src={heroIllustration} 
-              alt="Be Kaizen AI Process Optimization Illustration"
-              className="relative z-10 w-full h-auto animate-float"
-            />
+            <img src={heroIllustration} alt="Be Kaizen AI Process Optimization Illustration" className="relative z-10 w-full h-auto animate-float" />
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
