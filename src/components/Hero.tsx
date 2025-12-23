@@ -62,10 +62,7 @@ const Hero = () => {
                 <div className="text-sm text-muted-foreground">Menos tiempo</div>
               </div>
               <div className="w-px bg-border" />
-              <div>
-                <div className="text-3xl font-bold gradient-text font-heading">500+</div>
-                <div className="text-sm text-muted-foreground">Empresas</div>
-              </div>
+              
             </div>
           </div>
 
