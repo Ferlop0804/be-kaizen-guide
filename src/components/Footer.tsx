@@ -1,4 +1,5 @@
 import { Linkedin, Twitter, Youtube, Mail } from "lucide-react";
+import Logo from "./Logo";
 
 const Footer = () => {
   const footerLinks = {
@@ -34,12 +35,9 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="#" className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center">
-                <span className="text-base font-bold text-primary-foreground font-heading">BK</span>
-              </div>
-              <span className="text-2xl font-bold font-heading gradient-text">Be Kaizen</span>
-            </a>
+            <div className="mb-6">
+              <Logo size="md" />
+            </div>
             <p className="text-muted-foreground mb-6 max-w-sm">
               Tu copiloto de IA para la mejora continua. Optimiza procesos industriales con análisis de video inteligente.
             </p>
