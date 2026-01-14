@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Play, ChevronRight } from "lucide-react";
 import heroVideo from "@/assets/hero-video.mp4";
 import Logo from "./Logo";
+import DemoRequestModal from "./DemoRequestModal";
 
 const Hero = () => {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+
   return (
+    <>
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
@@ -96,7 +101,11 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300 mt-8">
-            <Button variant="hero" size="xl">
+            <Button 
+              variant="hero" 
+              size="xl"
+              onClick={() => setIsDemoModalOpen(true)}
+            >
               Agenda una Demo
               <ChevronRight className="w-5 h-5" />
             </Button>
@@ -120,7 +129,13 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      <DemoRequestModal 
+        open={isDemoModalOpen} 
+        onOpenChange={setIsDemoModalOpen} 
+      />
     </section>
+    </>
   );
 };
 
