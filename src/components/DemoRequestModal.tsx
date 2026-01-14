@@ -56,22 +56,28 @@ const DemoRequestModal = ({ open, onOpenChange }: DemoRequestModalProps) => {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      const { error } = await supabase
-        .from('demo_requests')
-        .insert({
-          full_name: data.fullName,
+      const { data: response, error } = await supabase.functions.invoke('submit-demo-request', {
+        body: {
+          fullName: data.fullName,
           company: data.company,
           email: data.email,
           challenge: data.challenge || null
-        });
-      
+        }
+      });
+
       if (error) throw error;
+      
+      // Check for application-level errors in the response
+      if (response?.error) {
+        throw new Error(response.error);
+      }
+      
       setIsSubmitted(true);
-    } catch (error) {
-      console.error('Error submitting demo request:', error);
+    } catch (error: any) {
+      const errorMessage = error?.message || "No se pudo enviar la solicitud. Por favor, intenta nuevamente.";
       toast({
         title: "Error",
-        description: "No se pudo enviar la solicitud. Por favor, intenta nuevamente.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
