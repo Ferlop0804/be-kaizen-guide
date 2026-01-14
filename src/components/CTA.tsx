@@ -1,7 +1,13 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
+import DemoRequestModal from "./DemoRequestModal";
+
 const CTA = () => {
-  return <section className="py-24 relative overflow-hidden">
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+
+  return (
+    <section className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="relative rounded-3xl overflow-hidden">
           {/* Background */}
@@ -23,7 +29,11 @@ const CTA = () => {
             </h2>
             <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">Basado en principios Kaizen, potenciado por inteligencia artificial</p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button variant="hero" size="xl">
+              <Button 
+                variant="hero" 
+                size="xl"
+                onClick={() => setIsDemoModalOpen(true)}
+              >
                 Agenda una Demo Gratis
                 <ChevronRight className="w-5 h-5" />
               </Button>
@@ -34,6 +44,13 @@ const CTA = () => {
           </div>
         </div>
       </div>
-    </section>;
+
+      <DemoRequestModal 
+        open={isDemoModalOpen} 
+        onOpenChange={setIsDemoModalOpen} 
+      />
+    </section>
+  );
 };
+
 export default CTA;
