@@ -23,12 +23,10 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, Calendar, Loader2 } from "lucide-react";
 
 const formSchema = z.object({
-  firstName: z.string().min(1, "El nombre es requerido").max(50),
-  lastName: z.string().min(1, "El apellido es requerido").max(50),
+  fullName: z.string().min(1, "El nombre es requerido").max(100),
   company: z.string().min(1, "La empresa es requerida").max(100),
-  role: z.string().min(1, "El rol es requerido").max(100),
   email: z.string().email("Ingresa un email válido").max(255),
-  message: z.string().max(1000).optional(),
+  challenge: z.string().max(1000).optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -45,12 +43,10 @@ const DemoRequestModal = ({ open, onOpenChange }: DemoRequestModalProps) => {
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      firstName: "",
-      lastName: "",
+      fullName: "",
       company: "",
-      role: "",
       email: "",
-      message: "",
+      challenge: "",
     },
   });
 
@@ -81,41 +77,26 @@ const DemoRequestModal = ({ open, onOpenChange }: DemoRequestModalProps) => {
               <DialogTitle className="text-2xl md:text-3xl font-heading font-semibold text-foreground">
                 Solicitá una demo personalizada de Be Kaizen
               </DialogTitle>
-              <DialogDescription className="text-muted-foreground">
-                Completa el formulario y nos pondremos en contacto contigo.
+              <DialogDescription className="text-muted-foreground leading-relaxed">
+                Analizamos tu proceso, detectamos oportunidades de mejora y te mostramos cómo aplicar Kaizen con datos reales.
               </DialogDescription>
             </DialogHeader>
 
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <FormField
-                    control={form.control}
-                    name="firstName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Nombre *</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Juan" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="lastName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Apellido *</FormLabel>
-                        <FormControl>
-                          <Input placeholder="García" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
+                <FormField
+                  control={form.control}
+                  name="fullName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Nombre y apellido *</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Juan García" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
                 <FormField
                   control={form.control}
@@ -133,24 +114,10 @@ const DemoRequestModal = ({ open, onOpenChange }: DemoRequestModalProps) => {
 
                 <FormField
                   control={form.control}
-                  name="role"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Rol *</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Ingeniero Industrial, Gerente de Operaciones..." {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email de trabajo *</FormLabel>
+                      <FormLabel>Email corporativo *</FormLabel>
                       <FormControl>
                         <Input type="email" placeholder="juan@empresa.com" {...field} />
                       </FormControl>
@@ -161,13 +128,13 @@ const DemoRequestModal = ({ open, onOpenChange }: DemoRequestModalProps) => {
 
                 <FormField
                   control={form.control}
-                  name="message"
+                  name="challenge"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Desafío de proceso (opcional)</FormLabel>
+                      <FormLabel>Contanos brevemente tu proceso o desafío actual</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Describe brevemente el proceso que te gustaría optimizar..."
+                          placeholder="Ej: línea de ensamblaje, logística interna, tiempos muertos, balanceo de puestos…"
                           className="resize-none min-h-[100px]"
                           {...field}
                         />
