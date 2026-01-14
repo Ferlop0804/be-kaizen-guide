@@ -30,6 +30,7 @@ const CTA = () => {
             <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">Basado en principios Kaizen, potenciado por inteligencia artificial</p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button 
+                type="button"
                 variant="hero" 
                 size="xl"
                 onClick={() => setIsDemoModalOpen(true)}
