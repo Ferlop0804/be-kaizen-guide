@@ -219,7 +219,7 @@ const DemoRequestModal = ({ open, onOpenChange }: DemoRequestModalProps) => {
                 asChild
               >
                 <a
-                  href="https://calendly.com/argentina-kaizen/demo"
+                  href="https://calendly.com/argentina-kaizen/demo-be-kaizen"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
