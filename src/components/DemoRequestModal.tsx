@@ -77,9 +77,9 @@ const DemoRequestModal = ({ open, onOpenChange }: DemoRequestModalProps) => {
       <DialogContent className="sm:max-w-lg max-h-[90vh] overflow-y-auto">
         {!isSubmitted ? (
           <>
-            <DialogHeader>
-              <DialogTitle className="text-2xl font-heading">
-                Solicitar Demo
+            <DialogHeader className="space-y-3">
+              <DialogTitle className="text-2xl md:text-3xl font-heading font-semibold text-foreground">
+                Solicitá una demo personalizada de Be Kaizen
               </DialogTitle>
               <DialogDescription className="text-muted-foreground">
                 Completa el formulario y nos pondremos en contacto contigo.
