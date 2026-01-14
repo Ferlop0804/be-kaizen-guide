@@ -2,6 +2,8 @@ import { useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 import {
   Dialog,
   DialogContent,
@@ -39,6 +41,7 @@ interface DemoRequestModalProps {
 const DemoRequestModal = ({ open, onOpenChange }: DemoRequestModalProps) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -52,11 +55,28 @@ const DemoRequestModal = ({ open, onOpenChange }: DemoRequestModalProps) => {
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
-    // Simulate API call - in production, this would save to database
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log("Demo request submitted:", data);
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    try {
+      const { error } = await supabase
+        .from('demo_requests')
+        .insert({
+          full_name: data.fullName,
+          company: data.company,
+          email: data.email,
+          challenge: data.challenge || null
+        });
+      
+      if (error) throw error;
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Error submitting demo request:', error);
+      toast({
+        title: "Error",
+        description: "No se pudo enviar la solicitud. Por favor, intenta nuevamente.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleClose = () => {
