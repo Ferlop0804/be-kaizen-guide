@@ -21,7 +21,7 @@ const CTA = () => {
               ¿Listo para Transformar tu{" "}
               <span className="gradient-text">Mejora Continua?</span>
             </h2>
-            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">Únete a las empresas que ya están optimizando sus procesos con Be Kaizen.</p>
+            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">Basado en principios Kaizen, potenciado por inteligencia artificial.”</p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button variant="hero" size="xl">
                 Agenda una Demo Gratis
