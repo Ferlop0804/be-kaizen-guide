@@ -21,8 +21,8 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/40" />
       </div>
 
-      {/* AI Detection Overlay Effects */}
-      <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
+      {/* AI Detection Overlay Effects - Hidden on mobile */}
+      <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden hidden md:block">
         {/* Scanning lines effect */}
         <div className="absolute inset-0 opacity-20">
           <div 
