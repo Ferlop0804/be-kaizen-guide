@@ -204,10 +204,10 @@ const DemoRequestModal = ({ open, onOpenChange }: DemoRequestModalProps) => {
               </div>
             </div>
             
-            <div className="space-y-2">
-              <h3 className="text-xl font-semibold font-heading">¡Gracias por tu interés!</h3>
+            <div className="space-y-3">
+              <h3 className="text-2xl font-semibold font-heading">¡Gracias! Ya tenemos tu solicitud</h3>
               <p className="text-muted-foreground leading-relaxed max-w-sm mx-auto">
-                Gracias por tu interés en Be Kaizen. Revisaremos tu información y, si encaja, coordinaremos una demo personalizada.
+                El próximo paso es agendar una breve demo para entender tu proceso y mostrarte cómo Be Kaizen puede ayudarte.
               </p>
             </div>
 
