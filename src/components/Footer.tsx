@@ -1,36 +1,61 @@
-import { Linkedin, Twitter, Youtube, Mail } from "lucide-react";
+import { Linkedin, Youtube, Mail } from "lucide-react";
 import Logo from "./Logo";
-
 const Footer = () => {
   const footerLinks = {
-    Plataforma: [
-      { label: "Diseño de Estaciones", href: "#" },
-      { label: "Análisis de Tiempos", href: "#" },
-      { label: "Análisis FMEA", href: "#" },
-      { label: "Reportes", href: "#" },
-    ],
-    Industrias: [
-      { label: "Automotriz", href: "#" },
-      { label: "Electrónica", href: "#" },
-      { label: "Manufactura", href: "#" },
-      { label: "Logística", href: "#" },
-    ],
-    Empresa: [
-      { label: "Sobre Nosotros", href: "#" },
-      { label: "Carreras", href: "#" },
-      { label: "Blog", href: "#" },
-      { label: "Contacto", href: "#" },
-    ],
-    Recursos: [
-      { label: "Documentación", href: "#" },
-      { label: "Casos de Éxito", href: "#" },
-      { label: "Webinars", href: "#" },
-      { label: "FAQ", href: "#" },
-    ],
+    Plataforma: [{
+      label: "Diseño de Estaciones",
+      href: "#"
+    }, {
+      label: "Análisis de Tiempos",
+      href: "#"
+    }, {
+      label: "Análisis FMEA",
+      href: "#"
+    }, {
+      label: "Reportes",
+      href: "#"
+    }],
+    Industrias: [{
+      label: "Automotriz",
+      href: "#"
+    }, {
+      label: "Electrónica",
+      href: "#"
+    }, {
+      label: "Manufactura",
+      href: "#"
+    }, {
+      label: "Logística",
+      href: "#"
+    }],
+    Empresa: [{
+      label: "Sobre Nosotros",
+      href: "#"
+    }, {
+      label: "Carreras",
+      href: "#"
+    }, {
+      label: "Blog",
+      href: "#"
+    }, {
+      label: "Contacto",
+      href: "#"
+    }],
+    Recursos: [{
+      label: "Documentación",
+      href: "#"
+    }, {
+      label: "Casos de Éxito",
+      href: "#"
+    }, {
+      label: "Webinars",
+      href: "#"
+    }, {
+      label: "FAQ",
+      href: "#"
+    }]
   };
-
-  return (
-    <footer className="border-t border-border bg-card/50">
+  return <footer className="border-t border-border bg-card/50">
       <div className="container mx-auto px-6 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-12">
           {/* Brand */}
@@ -45,9 +70,7 @@ const Footer = () => {
               <a href="#" className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
+              
               <a href="#" className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors">
                 <Youtube className="w-5 h-5" />
               </a>
@@ -58,20 +81,16 @@ const Footer = () => {
           </div>
 
           {/* Links */}
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category}>
+          {Object.entries(footerLinks).map(([category, links]) => <div key={category}>
               <h4 className="font-semibold font-heading text-foreground mb-4">{category}</h4>
               <ul className="space-y-3">
-                {links.map((link) => (
-                  <li key={link.label}>
+                {links.map(link => <li key={link.label}>
                     <a href={link.href} className="text-muted-foreground hover:text-primary transition-colors text-sm">
                       {link.label}
                     </a>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
-            </div>
-          ))}
+            </div>)}
         </div>
 
         {/* Bottom */}
@@ -92,8 +111,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
