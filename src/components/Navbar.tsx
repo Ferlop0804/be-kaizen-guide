@@ -20,7 +20,7 @@ const Navbar = () => {
   ];
 
   const resourcesDropdown = [
-    { label: "Documentación", href: "/documentation" },
+    { label: "Documentación", href: "/documentacion" },
     { label: "Casos de éxito", href: "/cases" },
     { label: "FAQ", href: "/faq" },
   ];

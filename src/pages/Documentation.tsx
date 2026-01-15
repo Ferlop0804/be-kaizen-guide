@@ -1,4 +1,4 @@
-import { FileText, BookOpen, Download } from "lucide-react";
+import { FileText, BookOpen, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -7,21 +7,17 @@ const Documentation = () => {
   const resources = [
     {
       icon: BookOpen,
-      title: "E-book: Introducción a Be Kaizen",
-      description: "Guía completa sobre cómo la inteligencia artificial está transformando la mejora continua en entornos industriales. Aprende los conceptos fundamentales y casos de aplicación.",
-      format: "PDF",
-      pages: "24 páginas",
-      buttonText: "Descargar e-book",
-      url: "https://drive.google.com/uc?export=download&confirm=t&id=15KxReCRcwrkoilqKuofk_rX-2CMGFyGD",
+      title: "E-book | IA aplicada a la mejora continua",
+      description: "Una introducción clara y práctica al uso de inteligencia artificial para optimizar procesos industriales.",
+      buttonText: "Ver e-book",
+      url: "/docs/ebook-ia-mejora-continua.pdf",
     },
     {
       icon: FileText,
-      title: "Guía de Implementación",
-      description: "Manual paso a paso para implementar Be Kaizen en tu organización. Desde la configuración inicial hasta las mejores prácticas para maximizar resultados.",
-      format: "Documento",
-      pages: "18 páginas",
-      buttonText: "Descargar guía",
-      url: "https://drive.google.com/uc?export=download&confirm=t&id=1Ih1aLV1bterAUDXPrl6f0XVYivsIQHfx",
+      title: "Guía práctica | Implementación Be Kaizen",
+      description: "Guía paso a paso para entender el enfoque Be Kaizen y sus principales casos de uso.",
+      buttonText: "Ver guía",
+      url: "/docs/guia-implementacion-bekaizen.pdf",
     },
   ];
 
@@ -39,11 +35,11 @@ const Documentation = () => {
                 Recursos
               </span>
               <h1 className="text-4xl md:text-5xl font-bold font-heading mt-4 mb-6">
-                Documentación
+                Recursos y documentación de Be Kaizen
               </h1>
               <p className="text-xl text-muted-foreground">
-                Recursos para aprender sobre Be Kaizen y cómo implementar 
-                la mejora continua impulsada por IA en tu organización.
+                Accedé a material práctico para entender cómo Be Kaizen aplica IA 
+                y mejora continua en procesos industriales.
               </p>
             </div>
           </div>
@@ -56,7 +52,7 @@ const Documentation = () => {
               {resources.map((resource, index) => (
                 <div 
                   key={index}
-                  className="bg-card rounded-2xl border border-border p-8 flex flex-col"
+                  className="bg-card rounded-2xl border border-border p-8 flex flex-col hover:border-primary/30 hover:shadow-lg transition-all duration-300"
                 >
                   <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                     <resource.icon className="w-7 h-7 text-primary" />
@@ -70,18 +66,13 @@ const Documentation = () => {
                     {resource.description}
                   </p>
                   
-                  <div className="flex items-center gap-4 mb-6 text-sm text-muted-foreground">
-                    <span className="px-3 py-1 bg-secondary rounded-full">{resource.format}</span>
-                    <span>{resource.pages}</span>
-                  </div>
-                  
                   <Button 
-                    variant="outline" 
+                    variant="hero" 
                     className="w-full gap-2"
                     asChild
                   >
                     <a href={resource.url} target="_blank" rel="noopener noreferrer">
-                      <Download className="w-4 h-4" />
+                      <ExternalLink className="w-4 h-4" />
                       {resource.buttonText}
                     </a>
                   </Button>
