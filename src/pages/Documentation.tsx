@@ -12,7 +12,7 @@ const Documentation = () => {
       format: "PDF",
       pages: "24 páginas",
       buttonText: "Descargar e-book",
-      url: "https://drive.google.com/drive/u/1/my-drive",
+      url: "https://drive.google.com/uc?export=download&id=15KxReCRcwrkoilqKuofk_rX-2CMGFyGD",
     },
     {
       icon: FileText,
@@ -21,7 +21,7 @@ const Documentation = () => {
       format: "Documento",
       pages: "18 páginas",
       buttonText: "Descargar guía",
-      url: "https://drive.google.com/drive/u/1/my-drive",
+      url: "https://drive.google.com/uc?export=download&id=1Ih1aLV1bterAUDXPrl6f0XVYivsIQHfx",
     },
   ];
 
