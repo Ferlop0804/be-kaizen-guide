@@ -1,4 +1,4 @@
-import { FileText, BookOpen, ExternalLink } from "lucide-react";
+import { FileText, BookOpen, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -71,8 +71,8 @@ const Documentation = () => {
                     className="w-full gap-2"
                     asChild
                   >
-                    <a href={resource.url} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="w-4 h-4" />
+                    <a href={resource.url} download>
+                      <Download className="w-4 h-4" />
                       {resource.buttonText}
                     </a>
                   </Button>
