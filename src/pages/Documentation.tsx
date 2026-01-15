@@ -11,7 +11,8 @@ const Documentation = () => {
       description: "Guía completa sobre cómo la inteligencia artificial está transformando la mejora continua en entornos industriales. Aprende los conceptos fundamentales y casos de aplicación.",
       format: "PDF",
       pages: "24 páginas",
-      buttonText: "Descargar E-book",
+      buttonText: "Descargar e-book",
+      url: "https://drive.google.com/drive/u/1/my-drive",
     },
     {
       icon: FileText,
@@ -19,7 +20,8 @@ const Documentation = () => {
       description: "Manual paso a paso para implementar Be Kaizen en tu organización. Desde la configuración inicial hasta las mejores prácticas para maximizar resultados.",
       format: "Documento",
       pages: "18 páginas",
-      buttonText: "Descargar Guía",
+      buttonText: "Descargar guía",
+      url: "https://drive.google.com/drive/u/1/my-drive",
     },
   ];
 
@@ -76,13 +78,12 @@ const Documentation = () => {
                   <Button 
                     variant="outline" 
                     className="w-full gap-2"
-                    onClick={() => {
-                      // Placeholder - URL will be added later
-                      console.log(`Downloading: ${resource.title}`);
-                    }}
+                    asChild
                   >
-                    <Download className="w-4 h-4" />
-                    {resource.buttonText}
+                    <a href={resource.url} target="_blank" rel="noopener noreferrer">
+                      <Download className="w-4 h-4" />
+                      {resource.buttonText}
+                    </a>
                   </Button>
                 </div>
               ))}
