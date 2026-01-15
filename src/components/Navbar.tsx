@@ -1,20 +1,49 @@
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
 import Logo from "./Logo";
 import DemoRequestModal from "./DemoRequestModal";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const navLinks = [
     { label: "Plataforma", href: "#platform" },
     { label: "Soluciones", href: "#solutions" },
     { label: "Industrias", href: "#industries" },
-    { label: "Recursos", href: "#resources" },
     { label: "Nosotros", href: "#about" },
   ];
+
+  const resourcesDropdown = [
+    { label: "Documentación", href: "#documentacion" },
+    { label: "Casos de éxito", href: "#casos-exito" },
+    { label: "FAQ", href: "#faq" },
+  ];
+
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsOpen(false);
+    setIsResourcesOpen(false);
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsResourcesOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <>
@@ -30,11 +59,38 @@ const Navbar = () => {
                 <a
                   key={link.label}
                   href={link.href}
+                  onClick={(e) => scrollToSection(e, link.href)}
                   className="nav-link"
                 >
                   {link.label}
                 </a>
               ))}
+              
+              {/* Resources Dropdown */}
+              <div className="relative" ref={dropdownRef}>
+                <button
+                  onClick={() => setIsResourcesOpen(!isResourcesOpen)}
+                  className="nav-link flex items-center gap-1"
+                >
+                  Recursos
+                  <ChevronDown className={`w-4 h-4 transition-transform ${isResourcesOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {isResourcesOpen && (
+                  <div className="absolute top-full left-0 mt-2 w-48 rounded-lg bg-card border border-border shadow-lg py-2 z-50 animate-fade-in">
+                    {resourcesDropdown.map((item) => (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        onClick={(e) => scrollToSection(e, item.href)}
+                        className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* CTA Button */}
@@ -66,11 +122,29 @@ const Navbar = () => {
                     key={link.label}
                     href={link.href}
                     className="nav-link py-2"
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e) => scrollToSection(e, link.href)}
                   >
                     {link.label}
                   </a>
                 ))}
+                
+                {/* Mobile Resources Dropdown */}
+                <div className="border-t border-border/50 pt-4">
+                  <span className="text-sm text-muted-foreground uppercase tracking-wider">Recursos</span>
+                  <div className="flex flex-col gap-2 mt-2">
+                    {resourcesDropdown.map((item) => (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        className="nav-link py-2 pl-4"
+                        onClick={(e) => scrollToSection(e, item.href)}
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+                
                 <Button 
                   variant="hero" 
                   size="lg" 
