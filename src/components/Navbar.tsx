@@ -61,13 +61,23 @@ const Navbar = () => {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
-                <Link
+                <a
                   key={link.label}
-                  to={link.href}
+                  href={link.href}
+                  onClick={(e) => {
+                    if (link.href.startsWith("/#")) {
+                      e.preventDefault();
+                      const targetId = link.href.replace("/#", "");
+                      const element = document.getElementById(targetId);
+                      if (element) {
+                        element.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }
+                  }}
                   className={`nav-link ${isActiveLink(link.href) ? 'text-primary' : ''}`}
                 >
                   {link.label}
-                </Link>
+                </a>
               ))}
               
               {/* Resources Dropdown */}
@@ -127,13 +137,24 @@ const Navbar = () => {
             <div className="md:hidden py-4 border-t border-border/50 animate-fade-in">
               <div className="flex flex-col gap-4">
                 {navLinks.map((link) => (
-                  <Link
+                  <a
                     key={link.label}
-                    to={link.href}
+                    href={link.href}
+                    onClick={(e) => {
+                      if (link.href.startsWith("/#")) {
+                        e.preventDefault();
+                        const targetId = link.href.replace("/#", "");
+                        const element = document.getElementById(targetId);
+                        if (element) {
+                          element.scrollIntoView({ behavior: "smooth" });
+                        }
+                        setIsOpen(false);
+                      }
+                    }}
                     className={`nav-link py-2 ${isActiveLink(link.href) ? 'text-primary' : ''}`}
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 ))}
                 
                 {/* Mobile Resources */}
