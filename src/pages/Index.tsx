@@ -2,9 +2,6 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
-import Industries from "@/components/Industries";
-import AboutUs from "@/components/AboutUs";
-import { DocumentacionSection, CasosExitoSection, FAQSection } from "@/components/ResourceSections";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
@@ -16,11 +13,6 @@ const Index = () => {
         <Hero />
         <Features />
         <HowItWorks />
-        <Industries />
-        <AboutUs />
-        <DocumentacionSection />
-        <CasosExitoSection />
-        <FAQSection />
         <CTA />
       </main>
       <Footer />
