@@ -1,10 +1,23 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
+// Allowed origins for CORS - restrict to known domains
+const ALLOWED_ORIGINS = [
+  'https://be-kaizen-guide.lovable.app',
+  'https://id-preview--27d8a55c-8f28-4e4f-bf6b-f790547f853f.lovable.app',
+  'http://localhost:8080',
+  'http://localhost:5173',
+];
+
+function getCorsHeaders(origin: string | null): Record<string, string> {
+  const allowedOrigin = ALLOWED_ORIGINS.includes(origin || '') 
+    ? origin! 
+    : ALLOWED_ORIGINS[0];
+  return {
+    'Access-Control-Allow-Origin': allowedOrigin,
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  };
+}
 
 // Simple in-memory rate limiting (resets on function cold start)
 // For production, consider using Upstash Redis or similar
@@ -50,6 +63,9 @@ const formSchema = z.object({
 });
 
 Deno.serve(async (req) => {
+  const origin = req.headers.get('origin');
+  const corsHeaders = getCorsHeaders(origin);
+
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -127,7 +143,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    console.log(`Demo request saved successfully for: ${data.email}`);
+    console.log('Demo request saved successfully');
 
     return new Response(
       JSON.stringify({ success: true, message: 'Solicitud recibida correctamente' }),
