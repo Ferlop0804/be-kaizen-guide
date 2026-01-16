@@ -38,7 +38,11 @@ const CTA = () => {
                 Agenda una Demo Gratis
                 <ChevronRight className="w-5 h-5" />
               </Button>
-              <Button variant="hero-outline" size="xl">
+              <Button 
+                variant="hero-outline" 
+                size="xl"
+                onClick={() => window.location.href = "/plans"}
+              >
                 Conoce los Planes
               </Button>
             </div>
