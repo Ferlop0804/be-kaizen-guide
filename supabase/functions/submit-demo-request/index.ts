@@ -4,7 +4,6 @@ import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
 // Allowed origins for CORS - restrict to known domains
 const ALLOWED_ORIGINS = [
   'https://be-kaizen-guide.lovable.app',
-  'https://id-preview--27d8a55c-8f28-4e4f-bf6b-f790547f853f.lovable.app',
   'http://localhost:8080',
   'http://localhost:5173',
 ];
