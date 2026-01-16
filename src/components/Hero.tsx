@@ -4,8 +4,11 @@ import { Play, ChevronRight } from "lucide-react";
 import heroVideo from "@/assets/hero-video.mp4";
 import Logo from "./Logo";
 import DemoRequestModal from "./DemoRequestModal";
+import VideoModal from "./VideoModal";
+
 const Hero = () => {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   return <>
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Video Background */}
@@ -93,7 +96,12 @@ const Hero = () => {
               Agenda una Demo
               <ChevronRight className="w-5 h-5" />
             </Button>
-            <Button variant="hero-outline" size="xl" className="gap-3">
+            <Button 
+              variant="hero-outline" 
+              size="xl" 
+              className="gap-3"
+              onClick={() => setIsVideoModalOpen(true)}
+            >
               <Play className="w-5 h-5" />
               Ver Video
             </Button>
@@ -115,6 +123,11 @@ const Hero = () => {
       </div>
 
       <DemoRequestModal open={isDemoModalOpen} onOpenChange={setIsDemoModalOpen} />
+      <VideoModal 
+        open={isVideoModalOpen} 
+        onOpenChange={setIsVideoModalOpen}
+        onRequestDemo={() => setIsDemoModalOpen(true)}
+      />
     </section>
     </>;
 };

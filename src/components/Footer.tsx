@@ -67,14 +67,22 @@ const Footer = () => {
               Tu copiloto de IA para la mejora continua. Optimiza procesos industriales con análisis de video inteligente.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors">
+              <a 
+                href="https://www.linkedin.com/company/bekaizen-arg" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+              >
                 <Linkedin className="w-5 h-5" />
               </a>
               
               <a href="#" className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors">
                 <Youtube className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors">
+              <a 
+                href="mailto:contacto@bekaizen-ai.com" 
+                className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+              >
                 <Mail className="w-5 h-5" />
               </a>
             </div>
