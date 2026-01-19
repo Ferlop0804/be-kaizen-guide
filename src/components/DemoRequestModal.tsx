@@ -29,6 +29,7 @@ const formSchema = z.object({
   company: z.string().min(1, "La empresa es requerida").max(100),
   email: z.string().email("Ingresa un email válido").max(255),
   challenge: z.string().max(1000).optional(),
+  website: z.string().max(0).optional(), // Honeypot field
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -41,6 +42,7 @@ interface DemoRequestModalProps {
 const DemoRequestModal = ({ open, onOpenChange }: DemoRequestModalProps) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formLoadedAt] = useState(() => Date.now()); // Track when form was loaded
   const { toast } = useToast();
 
   const form = useForm<FormData>({
@@ -50,6 +52,7 @@ const DemoRequestModal = ({ open, onOpenChange }: DemoRequestModalProps) => {
       company: "",
       email: "",
       challenge: "",
+      website: "", // Honeypot - must remain empty
     },
   });
 
@@ -61,7 +64,9 @@ const DemoRequestModal = ({ open, onOpenChange }: DemoRequestModalProps) => {
           fullName: data.fullName,
           company: data.company,
           email: data.email,
-          challenge: data.challenge || null
+          challenge: data.challenge || null,
+          website: data.website || null, // Honeypot field
+          _loadedAt: formLoadedAt, // Timing check
         }
       });
 
@@ -166,6 +171,24 @@ const DemoRequestModal = ({ open, onOpenChange }: DemoRequestModalProps) => {
                         />
                       </FormControl>
                       <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Honeypot field - hidden from users, bots will fill it */}
+                <FormField
+                  control={form.control}
+                  name="website"
+                  render={({ field }) => (
+                    <FormItem className="absolute -left-[9999px] opacity-0 pointer-events-none" aria-hidden="true">
+                      <FormLabel>Website</FormLabel>
+                      <FormControl>
+                        <Input 
+                          tabIndex={-1} 
+                          autoComplete="off"
+                          {...field} 
+                        />
+                      </FormControl>
                     </FormItem>
                   )}
                 />

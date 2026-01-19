@@ -41,6 +41,9 @@ function checkRateLimit(ip: string): { allowed: boolean; remaining: number } {
   return { allowed: true, remaining: RATE_LIMIT_MAX - record.count };
 }
 
+// Minimum time (ms) a human would take to fill the form
+const MIN_SUBMISSION_TIME_MS = 3000; // 3 seconds
+
 // Server-side validation schema (mirrors client-side)
 const formSchema = z.object({
   fullName: z.string()
@@ -59,6 +62,10 @@ const formSchema = z.object({
     .max(1000, "El desafío no puede exceder 1000 caracteres")
     .optional()
     .nullable(),
+  // Honeypot field - should always be empty for real users
+  website: z.string().max(0, "Invalid submission").optional().nullable(),
+  // Timestamp when form was loaded (for timing check)
+  _loadedAt: z.number().optional(),
 });
 
 Deno.serve(async (req) => {
@@ -104,10 +111,33 @@ Deno.serve(async (req) => {
     const body = await req.json();
     console.log('Received demo request submission');
 
+    // Check honeypot field - if filled, it's a bot
+    if (body.website && body.website.trim() !== '') {
+      console.log('Honeypot triggered - bot detected');
+      // Return success to not alert the bot, but don't process
+      return new Response(
+        JSON.stringify({ success: true, message: 'Solicitud recibida correctamente' }),
+        { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Check submission timing - reject if too fast (bot behavior)
+    if (body._loadedAt) {
+      const submissionTime = Date.now() - body._loadedAt;
+      if (submissionTime < MIN_SUBMISSION_TIME_MS) {
+        console.log(`Submission too fast (${submissionTime}ms) - possible bot`);
+        // Return success to not alert the bot, but don't process
+        return new Response(
+          JSON.stringify({ success: true, message: 'Solicitud recibida correctamente' }),
+          { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+    }
+
     // Validate input
     const validationResult = formSchema.safeParse(body);
     if (!validationResult.success) {
-      console.log('Validation failed:', validationResult.error.errors);
+      console.log('Validation failed');
       return new Response(
         JSON.stringify({ 
           error: 'Datos inválidos', 
