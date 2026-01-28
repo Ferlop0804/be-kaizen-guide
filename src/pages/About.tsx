@@ -179,8 +179,8 @@ const About = () => {
                     CEO & Founder
                   </p>
                   <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-                    Visionario con amplia experiencia en transformación digital e innovación empresarial. 
-                    Lidera la estrategia y el crecimiento de Be Kaizen con pasión por la mejora continua.
+                    Profesional con amplia trayectoria en mejora continua y excelencia operativa. 
+                    Lidera Be Kaizen aplicando metodologías probadas para optimizar procesos, generar eficiencia sostenible y transformar organizaciones desde adentro.
                   </p>
                 </div>
 
