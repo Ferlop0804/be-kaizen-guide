@@ -145,26 +145,66 @@ const About = () => {
           </div>
         </section>
 
-        {/* Team Philosophy */}
+        {/* Team Section */}
         <section className="py-20">
           <div className="container mx-auto px-6">
-            <div className="max-w-3xl mx-auto text-center space-y-8">
-              <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto">
-                <Users className="w-8 h-8 text-primary" />
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-12">
+                <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                  <Users className="w-8 h-8 text-primary" />
+                </div>
+                <h2 className="text-3xl font-bold font-heading text-foreground">
+                  Nuestro Equipo de Liderazgo
+                </h2>
+                <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
+                  Profesionales con experiencia en industria, tecnología y gestión empresarial, 
+                  comprometidos con la excelencia operativa.
+                </p>
               </div>
-              <h2 className="text-3xl font-bold font-heading text-foreground">
-                Un Equipo con Mentalidad Industrial
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Nuestro equipo combina experiencia en ingeniería industrial, desarrollo de software 
-                y machine learning. Entendemos los desafíos reales de la manufactura porque hemos 
-                trabajado en plantas de producción, no solo en oficinas.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Esa experiencia de primera mano es lo que nos permite crear una plataforma 
-                que realmente resuelve problemas — no solo una tecnología impresionante 
-                sin aplicación práctica.
-              </p>
+              
+              <div className="grid md:grid-cols-2 gap-12 max-w-3xl mx-auto">
+                {/* Fernando Lopez */}
+                <div className="text-center">
+                  <div className="w-48 h-48 mx-auto mb-6 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-lg">
+                    <img 
+                      src="/assets/fernando-lopez.png" 
+                      alt="Lic. Fernando Lopez - CEO & Founder" 
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold font-heading text-foreground">
+                    Lic. Fernando Lopez
+                  </h3>
+                  <p className="text-primary font-semibold mt-1">
+                    CEO & Founder
+                  </p>
+                  <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+                    Visionario con amplia experiencia en transformación digital e innovación empresarial. 
+                    Lidera la estrategia y el crecimiento de Be Kaizen con pasión por la mejora continua.
+                  </p>
+                </div>
+
+                {/* Silvia Farall */}
+                <div className="text-center">
+                  <div className="w-48 h-48 mx-auto mb-6 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-lg">
+                    <img 
+                      src="/assets/silvia-farall.png" 
+                      alt="Contadora Silvia Farall - General Manager" 
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold font-heading text-foreground">
+                    Contadora Silvia Farall
+                  </h3>
+                  <p className="text-primary font-semibold mt-1">
+                    General Manager
+                  </p>
+                  <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+                    Experta en gestión operativa y financiera con sólida trayectoria en administración empresarial. 
+                    Asegura la excelencia en la ejecución y operaciones de Be Kaizen.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
