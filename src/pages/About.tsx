@@ -1,10 +1,8 @@
 import { Target, Sparkles, TrendingUp, Eye, Lightbulb, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
 const About = () => {
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Navbar />
       <main className="pt-16">
         {/* Hero Section */}
@@ -166,11 +164,7 @@ const About = () => {
                 {/* Fernando Lopez */}
                 <div className="text-center">
                   <div className="w-48 h-48 mx-auto mb-6 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-lg">
-                    <img 
-                      src="/assets/fernando-lopez.png" 
-                      alt="Lic. Fernando Lopez - CEO & Founder" 
-                      className="w-full h-full object-cover object-top"
-                    />
+                    <img src="/assets/fernando-lopez.png" alt="Lic. Fernando Lopez - CEO & Founder" className="w-full h-full object-cover object-top" />
                   </div>
                   <h3 className="text-xl font-bold font-heading text-foreground">
                     Lic. Fernando Lopez
@@ -187,11 +181,7 @@ const About = () => {
                 {/* Silvia Farall */}
                 <div className="text-center">
                   <div className="w-48 h-48 mx-auto mb-6 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-lg">
-                    <img 
-                      src="/assets/silvia-farall.png" 
-                      alt="Contadora Silvia Farall - General Manager" 
-                      className="w-full h-full object-cover object-top"
-                    />
+                    <img alt="Contadora Silvia Farall - General Manager" className="w-full h-full object-cover object-top" src="/lovable-uploads/7edc11cd-cd34-4301-9c1c-b998aa006d52.png" />
                   </div>
                   <h3 className="text-xl font-bold font-heading text-foreground">
                     Contadora Silvia Farall
@@ -210,8 +200,6 @@ const About = () => {
         </section>
       </main>
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default About;
