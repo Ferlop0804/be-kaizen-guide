@@ -4,20 +4,11 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Check, ChevronRight, Star } from "lucide-react";
 import DemoRequestModal from "@/components/DemoRequestModal";
-import ContactSalesDialog from "@/components/ContactSalesDialog";
+import ContactSalesModal from "@/components/ContactSalesModal";
 
 const Plans = () => {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [isContactSalesOpen, setIsContactSalesOpen] = useState(false);
-
-  const SALES_EMAIL = "contacto@bekaizen-ai.com";
-
-  const handleContactSales = () => {
-    // Intentamos abrir el cliente de correo (puede no hacer nada en incógnito si no hay handler configurado)
-    window.location.href = `mailto:${SALES_EMAIL}`;
-    // Fallback visible para que siempre haya una acción
-    setIsContactSalesOpen(true);
-  };
 
   const plans = [
     {
@@ -59,7 +50,7 @@ const Plans = () => {
         "Acompañamiento dedicado",
       ],
       cta: "Contactar ventas",
-      action: handleContactSales,
+      action: () => setIsContactSalesOpen(true),
       highlighted: false,
     },
   ];
@@ -139,10 +130,9 @@ const Plans = () => {
         onOpenChange={setIsDemoModalOpen} 
       />
 
-      <ContactSalesDialog
+      <ContactSalesModal
         open={isContactSalesOpen}
         onOpenChange={setIsContactSalesOpen}
-        email={SALES_EMAIL}
       />
     </div>
   );
