@@ -1,4 +1,5 @@
 import { Linkedin, Youtube, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 import Logo from "./Logo";
 const Footer = () => {
   const footerLinks = {
@@ -107,15 +108,15 @@ const Footer = () => {
             © 2024 Be Kaizen. Todos los derechos reservados.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            <Link to="/privacidad" className="text-sm text-muted-foreground hover:text-primary transition-colors">
               Privacidad
-            </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            </Link>
+            <Link to="/terminos" className="text-sm text-muted-foreground hover:text-primary transition-colors">
               Términos
-            </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            </Link>
+            <Link to="/cookies" className="text-sm text-muted-foreground hover:text-primary transition-colors">
               Cookies
-            </a>
+            </Link>
           </div>
         </div>
       </div>
