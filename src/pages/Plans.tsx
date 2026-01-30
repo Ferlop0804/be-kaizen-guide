@@ -48,7 +48,7 @@ const Plans = () => {
         "Acompañamiento dedicado",
       ],
       cta: "Contactar ventas",
-      action: () => window.location.href = "mailto:contacto@bekaizen-ai.com",
+      action: () => window.open("mailto:contacto@bekaizen-ai.com", "_self"),
       highlighted: false,
     },
   ];
