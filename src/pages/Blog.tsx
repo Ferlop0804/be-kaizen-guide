@@ -1,9 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Clock, ArrowRight, Tag } from "lucide-react";
+import { Clock, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
+
+// Blog images
+import kaizenImage from "@/assets/blog/kaizen-philosophy.jpg";
+import tpsImage from "@/assets/blog/toyota-production-system.jpg";
+import fiveSImage from "@/assets/blog/5s-methodology.jpg";
+import mudaImage from "@/assets/blog/seven-wastes-muda.jpg";
+import aiImage from "@/assets/blog/ai-continuous-improvement.jpg";
+import vsmImage from "@/assets/blog/value-stream-mapping.jpg";
 
 interface BlogPost {
   id: string;
@@ -25,6 +33,7 @@ const blogPosts: BlogPost[] = [
     category: "Kaizen",
     readTime: "5 min",
     date: "2025-01-15",
+    image: kaizenImage,
   },
   {
     id: "2",
@@ -34,6 +43,7 @@ const blogPosts: BlogPost[] = [
     category: "TPS",
     readTime: "8 min",
     date: "2025-01-10",
+    image: tpsImage,
   },
   {
     id: "3",
@@ -43,6 +53,7 @@ const blogPosts: BlogPost[] = [
     category: "5S",
     readTime: "6 min",
     date: "2025-01-05",
+    image: fiveSImage,
   },
   {
     id: "4",
@@ -52,6 +63,7 @@ const blogPosts: BlogPost[] = [
     category: "Lean",
     readTime: "7 min",
     date: "2024-12-28",
+    image: mudaImage,
   },
   {
     id: "5",
@@ -61,6 +73,7 @@ const blogPosts: BlogPost[] = [
     category: "IA",
     readTime: "6 min",
     date: "2024-12-20",
+    image: aiImage,
   },
   {
     id: "6",
@@ -70,6 +83,7 @@ const blogPosts: BlogPost[] = [
     category: "Lean",
     readTime: "9 min",
     date: "2024-12-15",
+    image: vsmImage,
   },
 ];
 
@@ -144,9 +158,13 @@ const Blog = () => {
                   key={post.id}
                   className="group bg-card rounded-2xl border border-border overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
                 >
-                  {/* Placeholder Image */}
-                  <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                    <Tag className="w-12 h-12 text-primary/40" />
+                  {/* Blog Image */}
+                  <div className="aspect-video overflow-hidden">
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
                   </div>
                   
                   <div className="p-6">
