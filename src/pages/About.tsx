@@ -1,4 +1,4 @@
-import { Target, Sparkles, TrendingUp, Eye, Lightbulb, Users } from "lucide-react";
+import { Target, Sparkles, TrendingUp, Eye, Lightbulb, Users, Mail } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 const About = () => {
@@ -176,6 +176,12 @@ const About = () => {
                     Profesional con amplia trayectoria en mejora continua y excelencia operativa. 
                     Lidera Be Kaizen aplicando metodologías probadas para optimizar procesos, generar eficiencia sostenible y transformar organizaciones desde adentro.
                   </p>
+                  <a 
+                    href="mailto:fernando.lopez@bekaizen-ai.com" 
+                    className="inline-flex items-center justify-center w-10 h-10 mt-4 rounded-lg bg-secondary text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                  >
+                    <Mail className="w-5 h-5" />
+                  </a>
                 </div>
 
                 {/* Silvia Farall */}
@@ -193,6 +199,12 @@ const About = () => {
                     Experta en gestión operativa y financiera con sólida trayectoria en administración empresarial. 
                     Asegura la excelencia en la ejecución y operaciones de Be Kaizen.
                   </p>
+                  <a 
+                    href="mailto:silvia.farall@bekaizen-ai.com" 
+                    className="inline-flex items-center justify-center w-10 h-10 mt-4 rounded-lg bg-secondary text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                  >
+                    <Mail className="w-5 h-5" />
+                  </a>
                 </div>
               </div>
             </div>
