@@ -41,6 +41,33 @@ export type Database = {
         }
         Relationships: []
       }
+      sales_inquiries: {
+        Row: {
+          company: string
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          message: string | null
+        }
+        Insert: {
+          company: string
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          message?: string | null
+        }
+        Update: {
+          company?: string
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          message?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
