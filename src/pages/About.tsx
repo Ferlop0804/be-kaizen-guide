@@ -160,9 +160,9 @@ const About = () => {
                 </p>
               </div>
               
-              <div className="grid md:grid-cols-2 gap-12 max-w-3xl mx-auto items-start">
+              <div className="grid md:grid-cols-2 gap-12 max-w-3xl mx-auto">
                 {/* Fernando Lopez */}
-                <div className="text-center flex flex-col">
+                <div className="text-center flex flex-col h-full">
                   <div className="w-48 h-48 mx-auto mb-6 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-lg">
                     <img src="/assets/fernando-lopez.png" alt="Lic. Fernando Lopez - CEO & Founder" className="w-full h-full object-cover object-top" />
                   </div>
@@ -176,17 +176,19 @@ const About = () => {
                     Profesional con amplia trayectoria en mejora continua y excelencia operativa. 
                     Lidera Be Kaizen aplicando metodologías probadas para optimizar procesos, generar eficiencia sostenible y transformar organizaciones desde adentro.
                   </p>
-                  <a 
-                    href="mailto:fernando.lopez@bekaizen-ai.com" 
-                    className="inline-flex items-center justify-center gap-2 mt-4 px-4 py-2 rounded-lg bg-secondary text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors mx-auto"
-                  >
-                    <Mail className="w-5 h-5" />
-                    <span className="text-sm">fernando.lopez@bekaizen-ai.com</span>
-                  </a>
+                  <div className="mt-auto pt-4 flex justify-center">
+                    <a 
+                      href="mailto:fernando.lopez@bekaizen-ai.com" 
+                      className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-secondary text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                    >
+                      <Mail className="w-5 h-5" />
+                      <span className="text-sm">fernando.lopez@bekaizen-ai.com</span>
+                    </a>
+                  </div>
                 </div>
 
                 {/* Silvia Farall */}
-                <div className="text-center flex flex-col">
+                <div className="text-center flex flex-col h-full">
                   <div className="w-48 h-48 mx-auto mb-6 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-lg">
                     <img alt="Contadora Silvia Farall - General Manager" className="w-full h-full object-cover object-top" src="/lovable-uploads/7edc11cd-cd34-4301-9c1c-b998aa006d52.png" />
                   </div>
@@ -200,13 +202,15 @@ const About = () => {
                     Experta en gestión operativa y financiera con sólida trayectoria en administración empresarial. 
                     Asegura la excelencia en la ejecución y operaciones de Be Kaizen.
                   </p>
-                  <a 
-                    href="mailto:silvia.farall@bekaizen-ai.com" 
-                    className="inline-flex items-center justify-center gap-2 mt-4 px-4 py-2 rounded-lg bg-secondary text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors mx-auto"
-                  >
-                    <Mail className="w-5 h-5" />
-                    <span className="text-sm">silvia.farall@bekaizen-ai.com</span>
-                  </a>
+                  <div className="mt-auto pt-4 flex justify-center">
+                    <a 
+                      href="mailto:silvia.farall@bekaizen-ai.com" 
+                      className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-secondary text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                    >
+                      <Mail className="w-5 h-5" />
+                      <span className="text-sm">silvia.farall@bekaizen-ai.com</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
