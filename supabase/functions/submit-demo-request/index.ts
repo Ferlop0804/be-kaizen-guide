@@ -8,8 +8,16 @@ const ALLOWED_ORIGINS = [
   'http://localhost:5173',
 ];
 
+function isAllowedOrigin(origin: string | null): boolean {
+  if (!origin) return false;
+  if (ALLOWED_ORIGINS.includes(origin)) return true;
+  // Allow Lovable preview origins
+  if (origin.endsWith('.lovableproject.com') || origin.endsWith('.lovable.app')) return true;
+  return false;
+}
+
 function getCorsHeaders(origin: string | null): Record<string, string> {
-  const allowedOrigin = ALLOWED_ORIGINS.includes(origin || '') 
+  const allowedOrigin = isAllowedOrigin(origin) 
     ? origin! 
     : ALLOWED_ORIGINS[0];
   return {
