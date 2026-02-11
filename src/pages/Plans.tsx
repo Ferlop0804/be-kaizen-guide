@@ -1,15 +1,10 @@
-import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Check, ChevronRight, Star } from "lucide-react";
-import DemoRequestModal from "@/components/DemoRequestModal";
-import ContactSalesModal from "@/components/ContactSalesModal";
+import { openDemoMailto, openSalesMailto } from "@/lib/mailto";
 
 const Plans = () => {
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
-  const [isContactSalesOpen, setIsContactSalesOpen] = useState(false);
-
   const plans = [
     {
       name: "Starter",
@@ -21,7 +16,7 @@ const Plans = () => {
         "Soporte por email",
       ],
       cta: "Solicitar demo",
-      action: () => setIsDemoModalOpen(true),
+      action: openDemoMailto,
       highlighted: false,
     },
     {
@@ -35,7 +30,7 @@ const Plans = () => {
         "Soporte prioritario",
       ],
       cta: "Solicitar demo",
-      action: () => setIsDemoModalOpen(true),
+      action: openDemoMailto,
       highlighted: true,
       badge: "Recomendado",
     },
@@ -50,7 +45,7 @@ const Plans = () => {
         "Acompañamiento dedicado",
       ],
       cta: "Contactar ventas",
-      action: () => setIsContactSalesOpen(true),
+      action: openSalesMailto,
       highlighted: false,
     },
   ];
@@ -59,7 +54,6 @@ const Plans = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="pt-24 pb-16">
-        {/* Header */}
         <section className="container mx-auto px-6 text-center mb-16">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-6">
             Planes <span className="gradient-text">Be Kaizen</span>
@@ -69,7 +63,6 @@ const Plans = () => {
           </p>
         </section>
 
-        {/* Pricing Cards */}
         <section className="container mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {plans.map((plan) => (
@@ -81,7 +74,6 @@ const Plans = () => {
                     : "bg-card border border-border hover:border-primary/50"
                 }`}
               >
-                {/* Badge */}
                 {plan.badge && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                     <div className="flex items-center gap-1 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
@@ -91,13 +83,11 @@ const Plans = () => {
                   </div>
                 )}
 
-                {/* Plan Header */}
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-bold font-heading mb-2">{plan.name}</h3>
                   <p className="text-muted-foreground">{plan.description}</p>
                 </div>
 
-                {/* Features */}
                 <ul className="space-y-4 mb-8">
                   {plan.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3">
@@ -107,7 +97,6 @@ const Plans = () => {
                   ))}
                 </ul>
 
-                {/* CTA */}
                 <Button
                   type="button"
                   variant={plan.highlighted ? "hero" : "outline"}
@@ -124,16 +113,6 @@ const Plans = () => {
         </section>
       </main>
       <Footer />
-
-      <DemoRequestModal 
-        open={isDemoModalOpen} 
-        onOpenChange={setIsDemoModalOpen} 
-      />
-
-      <ContactSalesModal
-        open={isContactSalesOpen}
-        onOpenChange={setIsContactSalesOpen}
-      />
     </div>
   );
 };

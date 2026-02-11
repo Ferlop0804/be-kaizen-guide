@@ -3,10 +3,9 @@ import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import DemoRequestModal from "@/components/DemoRequestModal";
+import { openDemoMailto } from "@/lib/mailto";
 
 const FAQ = () => {
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs = [
@@ -155,7 +154,7 @@ const FAQ = () => {
               <Button 
                 variant="hero" 
                 size="lg"
-                onClick={() => setIsDemoModalOpen(true)}
+                onClick={openDemoMailto}
               >
                 Agenda una Demo
               </Button>
@@ -165,10 +164,6 @@ const FAQ = () => {
       </main>
       <Footer />
       
-      <DemoRequestModal 
-        open={isDemoModalOpen} 
-        onOpenChange={setIsDemoModalOpen} 
-      />
     </div>
   );
 };
