@@ -3,11 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Play, ChevronRight } from "lucide-react";
 import heroVideo from "@/assets/hero-video.mp4";
 import Logo from "./Logo";
-import DemoRequestModal from "./DemoRequestModal";
 import VideoModal from "./VideoModal";
+import { openDemoMailto } from "@/lib/mailto";
 
 const Hero = () => {
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   return <>
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -16,7 +15,6 @@ const Hero = () => {
         <video autoPlay loop muted playsInline className="w-full h-full object-cover">
           <source src={heroVideo} type="video/mp4" />
         </video>
-        {/* Dark overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/40" />
       </div>
 
@@ -24,13 +22,8 @@ const Hero = () => {
       <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden hidden md:block">
         {/* Scanning lines effect */}
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent animate-scan-line" style={{
-            top: '30%'
-          }} />
-          <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-primary-glow to-transparent animate-scan-line" style={{
-            top: '60%',
-            animationDelay: '2s'
-          }} />
+          <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent animate-scan-line" style={{ top: '30%' }} />
+          <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-primary-glow to-transparent animate-scan-line" style={{ top: '60%', animationDelay: '2s' }} />
         </div>
 
         {/* AI Detection boxes */}
@@ -77,12 +70,10 @@ const Hero = () => {
 
       <div className="container mx-auto px-6 py-20 relative z-10">
         <div className="max-w-2xl">
-          {/* Logo/Title */}
           <div className="animate-fade-in animation-delay-100">
             <Logo size="lg" showText={true} />
           </div>
 
-          {/* Tagline */}
           <div className="animate-fade-in animation-delay-200 space-y-4 mt-8">
             <h2 className="text-2xl md:text-3xl font-semibold text-foreground font-heading">Tu Copiloto de IA para la Mejora Continua.</h2>
             <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
@@ -90,9 +81,8 @@ const Hero = () => {
             </p>
           </div>
 
-          {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300 mt-8">
-            <Button variant="hero" size="xl" onClick={() => setIsDemoModalOpen(true)}>
+            <Button variant="hero" size="xl" onClick={openDemoMailto}>
               Agenda una Demo
               <ChevronRight className="w-5 h-5" />
             </Button>
@@ -107,7 +97,6 @@ const Hero = () => {
             </Button>
           </div>
 
-          {/* Stats */}
           <div className="flex gap-8 pt-8 animate-fade-in animation-delay-400">
             <div>
               <div className="text-3xl font-bold gradient-text font-heading">4X</div>
@@ -122,11 +111,10 @@ const Hero = () => {
         </div>
       </div>
 
-      <DemoRequestModal open={isDemoModalOpen} onOpenChange={setIsDemoModalOpen} />
       <VideoModal 
         open={isVideoModalOpen} 
         onOpenChange={setIsVideoModalOpen}
-        onRequestDemo={() => setIsDemoModalOpen(true)}
+        onRequestDemo={openDemoMailto}
       />
     </section>
     </>;
