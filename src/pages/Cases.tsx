@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { Building2, Clock, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { openDemoMailto } from "@/lib/mailto";
+import DemoRequestModal from "@/components/DemoRequestModal";
 
 const Cases = () => {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+
   const placeholderCases = [
     { industry: "Manufactura Automotriz", challenge: "Optimización de líneas de ensamblaje", icon: Building2 },
     { industry: "Industria Alimenticia", challenge: "Reducción de tiempos de ciclo en empaque", icon: Clock },
@@ -63,7 +66,7 @@ const Cases = () => {
               <p className="text-muted-foreground">
                 Agenda una demo para explorar cómo Be Kaizen puede ayudarte a optimizar tus procesos y generar resultados medibles.
               </p>
-              <Button variant="hero" size="lg" onClick={openDemoMailto}>
+              <Button variant="hero" size="lg" onClick={() => setIsDemoModalOpen(true)}>
                 Agenda una Demo
               </Button>
             </div>
@@ -71,6 +74,8 @@ const Cases = () => {
         </section>
       </main>
       <Footer />
+
+      <DemoRequestModal open={isDemoModalOpen} onOpenChange={setIsDemoModalOpen} />
     </div>
   );
 };

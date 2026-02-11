@@ -4,10 +4,12 @@ import { Play, ChevronRight } from "lucide-react";
 import heroVideo from "@/assets/hero-video.mp4";
 import Logo from "./Logo";
 import VideoModal from "./VideoModal";
-import { openDemoMailto } from "@/lib/mailto";
+import DemoRequestModal from "./DemoRequestModal";
 
 const Hero = () => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+
   return <>
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Video Background */}
@@ -26,7 +28,6 @@ const Hero = () => {
           <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-primary-glow to-transparent animate-scan-line" style={{ top: '60%', animationDelay: '2s' }} />
         </div>
 
-        {/* AI Detection boxes */}
         <div className="absolute right-[15%] top-[25%] animate-fade-in animation-delay-200">
           <div className="border-2 border-primary/60 rounded-lg p-2 backdrop-blur-sm bg-background/20">
             <div className="flex items-center gap-2">
@@ -59,7 +60,6 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Corner brackets decoration */}
         <div className="absolute right-[8%] top-[20%] w-32 h-32 opacity-40">
           <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary" />
           <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-primary" />
@@ -82,7 +82,7 @@ const Hero = () => {
           </div>
 
           <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300 mt-8">
-            <Button variant="hero" size="xl" onClick={openDemoMailto}>
+            <Button variant="hero" size="xl" onClick={() => setIsDemoModalOpen(true)}>
               Agenda una Demo
               <ChevronRight className="w-5 h-5" />
             </Button>
@@ -114,9 +114,14 @@ const Hero = () => {
       <VideoModal 
         open={isVideoModalOpen} 
         onOpenChange={setIsVideoModalOpen}
-        onRequestDemo={openDemoMailto}
+        onRequestDemo={() => {
+          setIsVideoModalOpen(false);
+          setIsDemoModalOpen(true);
+        }}
       />
     </section>
-    </>;
+
+    <DemoRequestModal open={isDemoModalOpen} onOpenChange={setIsDemoModalOpen} />
+  </>;
 };
 export default Hero;

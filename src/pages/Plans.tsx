@@ -1,10 +1,15 @@
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Check, ChevronRight, Star } from "lucide-react";
-import { openDemoMailto, openSalesMailto } from "@/lib/mailto";
+import DemoRequestModal from "@/components/DemoRequestModal";
+import ContactSalesModal from "@/components/ContactSalesModal";
 
 const Plans = () => {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const [isSalesModalOpen, setIsSalesModalOpen] = useState(false);
+
   const plans = [
     {
       name: "Starter",
@@ -16,7 +21,7 @@ const Plans = () => {
         "Soporte por email",
       ],
       cta: "Solicitar demo",
-      action: openDemoMailto,
+      action: () => setIsDemoModalOpen(true),
       highlighted: false,
     },
     {
@@ -30,7 +35,7 @@ const Plans = () => {
         "Soporte prioritario",
       ],
       cta: "Solicitar demo",
-      action: openDemoMailto,
+      action: () => setIsDemoModalOpen(true),
       highlighted: true,
       badge: "Recomendado",
     },
@@ -45,7 +50,7 @@ const Plans = () => {
         "Acompañamiento dedicado",
       ],
       cta: "Contactar ventas",
-      action: openSalesMailto,
+      action: () => setIsSalesModalOpen(true),
       highlighted: false,
     },
   ];
@@ -113,6 +118,9 @@ const Plans = () => {
         </section>
       </main>
       <Footer />
+
+      <DemoRequestModal open={isDemoModalOpen} onOpenChange={setIsDemoModalOpen} />
+      <ContactSalesModal open={isSalesModalOpen} onOpenChange={setIsSalesModalOpen} />
     </div>
   );
 };
