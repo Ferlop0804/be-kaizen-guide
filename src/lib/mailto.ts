@@ -6,7 +6,12 @@ export const openDemoMailto = () => {
     "Hola, me gustaría agendar una demo de Be Kaizen.\n\n" +
     "Nombre:\nEmpresa:\nTeléfono:\n\nComentarios:\n"
   );
-  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  const link = document.createElement("a");
+  link.href = mailtoUrl;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.click();
 };
 
 export const openSalesMailto = () => {
@@ -15,5 +20,10 @@ export const openSalesMailto = () => {
     "Hola, me gustaría recibir más información sobre los planes Enterprise de Be Kaizen.\n\n" +
     "Nombre:\nEmpresa:\nTeléfono:\n\nComentarios:\n"
   );
-  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  const link = document.createElement("a");
+  link.href = mailtoUrl;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.click();
 };
