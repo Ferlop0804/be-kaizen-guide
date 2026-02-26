@@ -184,6 +184,66 @@ Deno.serve(async (req) => {
 
     console.log('Demo request saved successfully');
 
+    // Send emails via Resend
+    const resendApiKey = Deno.env.get('RESEND_API_KEY');
+    if (resendApiKey) {
+      const sendEmail = async (emailPayload: Record<string, unknown>) => {
+        try {
+          const res = await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${resendApiKey}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(emailPayload),
+          });
+          if (!res.ok) {
+            const errBody = await res.text();
+            console.error('Resend error:', errBody);
+          }
+        } catch (e) {
+          console.error('Email send error:', e);
+        }
+      };
+
+      // Email 1: Confirmation to lead
+      await sendEmail({
+        from: 'Be Kaizen AI <noreply@bekaizen-ai.com>',
+        to: [data.email],
+        reply_to: 'contacto@bekaizen-ai.com',
+        subject: 'Recibimos tu solicitud de demo | Be Kaizen AI',
+        html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px">
+          <h2 style="color:#333">Hola ${data.fullName},</h2>
+          <p>Gracias por solicitar una demo de <strong>Be Kaizen AI</strong>.</p>
+          <p>Recibimos correctamente tu solicitud y en breve nos pondremos en contacto para coordinar fecha y horario.</p>
+          <p>Si necesitás información adicional, podés responder este email.</p>
+          <br/>
+          <p>Saludos,<br/><strong>Equipo Be Kaizen AI</strong><br/>contacto@bekaizen-ai.com<br/><a href="https://www.bekaizen-ai.com">www.bekaizen-ai.com</a></p>
+        </div>`,
+      });
+
+      // Email 2: Internal notification
+      await sendEmail({
+        from: 'Be Kaizen AI <noreply@bekaizen-ai.com>',
+        to: ['contacto@bekaizen-ai.com', 'fernando.lopez@bekaizen-ai.com'],
+        reply_to: data.email,
+        subject: 'Nuevo lead solicitó demo',
+        html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px">
+          <h2 style="color:#333">Nuevo lead solicitó una demo</h2>
+          <p><strong>Nombre:</strong> ${data.fullName}</p>
+          <p><strong>Empresa:</strong> ${data.company}</p>
+          <p><strong>Email:</strong> ${data.email}</p>
+          <p><strong>Mensaje:</strong><br/>${data.challenge || 'No especificado'}</p>
+          <hr style="margin:16px 0"/>
+          <p style="color:#666"><em>Acción recomendada: Contactar dentro de las próximas 24 hs.</em></p>
+        </div>`,
+      });
+
+      console.log('Notification emails sent');
+    } else {
+      console.warn('RESEND_API_KEY not configured, skipping emails');
+    }
+
     return new Response(
       JSON.stringify({ success: true, message: 'Solicitud recibida correctamente' }),
       { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
