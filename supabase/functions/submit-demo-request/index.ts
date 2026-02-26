@@ -208,7 +208,7 @@ Deno.serve(async (req) => {
 
       // Email 1: Confirmation to lead
       await sendEmail({
-        from: 'Be Kaizen AI <noreply@bekaizen-ai.com>',
+        from: 'Be Kaizen AI <contacto@bekaizen-ai.com>',
         to: [data.email],
         reply_to: 'contacto@bekaizen-ai.com',
         subject: 'Recibimos tu solicitud de demo | Be Kaizen AI',
@@ -224,7 +224,7 @@ Deno.serve(async (req) => {
 
       // Email 2: Internal notification
       await sendEmail({
-        from: 'Be Kaizen AI <noreply@bekaizen-ai.com>',
+        from: 'Be Kaizen AI <contacto@bekaizen-ai.com>',
         to: ['contacto@bekaizen-ai.com', 'fernando.lopez@bekaizen-ai.com'],
         reply_to: data.email,
         subject: 'Nuevo lead solicitó demo',
