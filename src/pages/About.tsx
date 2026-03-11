@@ -190,7 +190,7 @@ const About = () => {
                 {/* Silvia Farall */}
                 <div className="text-center flex flex-col h-full">
                   <div className="w-48 h-48 mx-auto mb-6 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-lg">
-                    <img alt="Contadora Silvia Farall - General Manager" className="w-full h-full object-cover object-top" src="/lovable-uploads/7edc11cd-cd34-4301-9c1c-b998aa006d52.png" />
+                    <img alt="Contadora Silvia Farall - General Manager" className="w-full h-full object-cover object-top" src="/assets/silvia-farall.png" />
                   </div>
                   <h3 className="text-xl font-bold font-heading text-foreground">
                     Contadora Silvia Farall
