@@ -2,7 +2,6 @@ import { useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import {
   Dialog,
@@ -59,21 +58,23 @@ const ContactSalesModal = ({ open, onOpenChange }: ContactSalesModalProps) => {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      const { data: response, error } = await supabase.functions.invoke('submit-sales-inquiry', {
-        body: {
+      const res = await fetch("/.netlify/functions/submit-sales-inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           fullName: data.fullName,
           company: data.company,
           email: data.email,
           message: data.message || null,
           website: data.website || null,
           _loadedAt: formLoadedAt,
-        }
+        }),
       });
 
-      if (error) throw error;
-      
-      if (response?.error) {
-        throw new Error(response.error);
+      const response = await res.json();
+
+      if (!res.ok || response?.error) {
+        throw new Error(response?.error || "Error al enviar la solicitud");
       }
       
       setIsSubmitted(true);
