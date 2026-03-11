@@ -58,22 +58,23 @@ const DemoRequestModal = ({ open, onOpenChange }: DemoRequestModalProps) => {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      const { data: response, error } = await supabase.functions.invoke('submit-demo-request', {
-        body: {
+      const res = await fetch("/.netlify/functions/submit-demo-request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           fullName: data.fullName,
           company: data.company,
           email: data.email,
           challenge: data.challenge || null,
-          website: data.website || null, // Honeypot field
-          _loadedAt: formLoadedAt, // Timing check
-        }
+          website: data.website || null,
+          _loadedAt: formLoadedAt,
+        }),
       });
 
-      if (error) throw error;
-      
-      // Check for application-level errors in the response
-      if (response?.error) {
-        throw new Error(response.error);
+      const response = await res.json();
+
+      if (!res.ok || response?.error) {
+        throw new Error(response?.error || "Error al enviar la solicitud");
       }
       
       setIsSubmitted(true);
