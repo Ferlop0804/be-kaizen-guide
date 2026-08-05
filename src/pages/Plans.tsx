@@ -68,7 +68,7 @@ const Plans = () => {
         "Actualizaciones incluidas",
         "Soporte prioritario",
       ],
-      cta: "Solicitar Demo",
+      cta: "Solicitar información",
       action: openDemo,
       variant: "outline" as const,
       footnote: "Tarifa Founding congelada mientras el contrato siga activo.",
