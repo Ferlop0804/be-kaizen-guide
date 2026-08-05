@@ -22,8 +22,8 @@ const Plans = () => {
       badge: "Cupos muy limitados",
       note:
         "Buscamos únicamente entre 3 y 5 empresas industriales para participar en la validación de la primera versión de Be Kaizen. Los participantes influirán directamente en el desarrollo del producto y accederán a beneficios exclusivos como Founding Customers.",
-      priceLabel: "Sin costo",
-      priceSuffix: "durante el piloto de 90 días",
+      priceLabel: "Sin costo durante el piloto",
+      priceSuffix: "Programa exclusivo de validación de 90 días.",
       description: null as string | null,
       features: [
         "Programa de 90 días",
