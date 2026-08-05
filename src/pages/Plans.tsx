@@ -22,8 +22,8 @@ const Plans = () => {
       badge: "Cupos muy limitados",
       note:
         "Buscamos únicamente entre 3 y 5 empresas industriales para participar en la validación de la primera versión de Be Kaizen. Los participantes influirán directamente en el desarrollo del producto y accederán a beneficios exclusivos como Founding Customers.",
-      priceLabel: "Sin costo",
-      priceSuffix: "durante el piloto de 90 días",
+      priceLabel: "Sin costo durante el piloto",
+      priceSuffix: "Programa exclusivo de validación de 90 días.",
       description: null as string | null,
       features: [
         "Programa de 90 días",
@@ -51,8 +51,8 @@ const Plans = () => {
       icon: Star,
       badge: "Primeros clientes",
       note: null,
-      priceLabel: "USD 5.000",
-      priceSuffix: "por año",
+      priceLabel: "Precio preferencial exclusivo para empresas que completen exitosamente el Design Partner Program.",
+      priceSuffix: "Disponible únicamente para los primeros clientes de Be Kaizen.",
       description:
         "Para empresas que completaron exitosamente el programa Design Partner y desean incorporar Be Kaizen a su operación.",
       features: [
@@ -68,7 +68,7 @@ const Plans = () => {
         "Actualizaciones incluidas",
         "Soporte prioritario",
       ],
-      cta: "Solicitar Demo",
+      cta: "Solicitar información",
       action: openDemo,
       variant: "outline" as const,
       footnote: "Tarifa Founding congelada mientras el contrato siga activo.",
