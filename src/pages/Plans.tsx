@@ -51,8 +51,8 @@ const Plans = () => {
       icon: Star,
       badge: "Primeros clientes",
       note: null,
-      priceLabel: "USD 5.000",
-      priceSuffix: "por año",
+      priceLabel: "Precio preferencial exclusivo para empresas que completen exitosamente el Design Partner Program.",
+      priceSuffix: "Disponible únicamente para los primeros clientes de Be Kaizen.",
       description:
         "Para empresas que completaron exitosamente el programa Design Partner y desean incorporar Be Kaizen a su operación.",
       features: [
