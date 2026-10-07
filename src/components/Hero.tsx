@@ -75,10 +75,13 @@ const Hero = () => {
           </div>
 
           <div className="animate-fade-in animation-delay-200 space-y-4 mt-8">
-            <h2 className="text-2xl md:text-3xl font-semibold text-foreground font-heading">Tu Copiloto de IA para la Mejora Continua.</h2>
-            <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-              Ayudando a ingenieros industriales a potenciar el diseño de estaciones y la optimización de procesos utilizando video de smartphone.
+            <h1 className="text-3xl md:text-5xl font-bold text-foreground font-heading leading-tight">De la filmación a la WIS en menos de una hora</h1>
+            <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
+              Be Kaizen analiza automáticamente los videos de tus puestos de trabajo y genera el estudio de tiempos, la hoja de instrucciones (WIS), la hoja combinada (SWCT) y el Yamazumi — sin cronómetro, sin Excel, sin salir de la planta.
             </p>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/40 bg-primary/10 text-primary text-sm font-medium">
+              ✓ Procesamiento 100% local · El video no sale de la planta
+            </div>
           </div>
 
           <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300 mt-8">
@@ -97,16 +100,6 @@ const Hero = () => {
             </Button>
           </div>
 
-          <div className="flex gap-8 pt-8 animate-fade-in animation-delay-400">
-            <div>
-              <div className="text-3xl font-bold gradient-text font-heading">4X</div>
-              <div className="text-sm text-muted-foreground">Más productividad</div>
-            </div>
-            <div className="w-px bg-border" />
-            <div>
-              <div className="text-3xl font-bold gradient-text font-heading">85%</div>
-              <div className="text-sm text-muted-foreground">Menos tiempo</div>
-            </div>
           </div>
         </div>
       </div>
