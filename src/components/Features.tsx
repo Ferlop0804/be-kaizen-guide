@@ -1,36 +1,12 @@
-import { Zap, Video, BarChart3, Brain, Clock, Shield } from "lucide-react";
+import { Video, Brain, FileText, GitCompare, Clock, ShieldCheck } from "lucide-react";
 
 const features = [
-  {
-    icon: Video,
-    title: "Análisis de Video con IA",
-    description: "Captura procesos con tu smartphone y obtén análisis automáticos de tiempos y movimientos.",
-  },
-  {
-    icon: Brain,
-    title: "Detección Inteligente",
-    description: "Identifica automáticamente actividades de valor agregado y desperdicios en tus procesos.",
-  },
-  {
-    icon: BarChart3,
-    title: "Reportes Instantáneos",
-    description: "Genera estudios de tiempos y movimientos en minutos, no en días.",
-  },
-  {
-    icon: Zap,
-    title: "Sugerencias de Mejora",
-    description: "Recibe recomendaciones basadas en IA para optimizar tus estaciones de trabajo.",
-  },
-  {
-    icon: Clock,
-    title: "Ahorro de Tiempo",
-    description: "Reduce el tiempo de análisis de procesos hasta en un 85%.",
-  },
-  {
-    icon: Shield,
-    title: "Análisis FMEA",
-    description: "Identifica riesgos potenciales y modos de falla de forma proactiva.",
-  },
+  { icon: Video, title: "Análisis de Video con IA", description: "Filmá el puesto con cualquier cámara. Kaizen Lab detecta automáticamente los ciclos, segmenta los pasos y mide los tiempos sin que nadie toque el cronómetro." },
+  { icon: Brain, title: "Detección Inteligente", description: "Clasifica cada paso como Valor Agregado, Necesario sin Valor o Desperdicio. Detecta cuellos de botella cuando el ciclo supera el Takt Time y los muestra en el Yamazumi." },
+  { icon: FileText, title: "Entregables Lean Automáticos", description: "Genera la WIS con foto por paso, el estudio de tiempos con TO→TN→TE, la hoja combinada SWCT y el Yamazumi. Lo que hoy le lleva al IE medio día, Kaizen Lab lo hace solo." },
+  { icon: GitCompare, title: "Comparativo Antes y Después", description: "Medí el impacto real de cada evento Kaizen: delta por elemento, reducción de ciclo y variación de Headcount. La evidencia de mejora lista para auditoría, guardada junto al estudio." },
+  { icon: Clock, title: "Ahorro de Tiempo Real", description: "Un puesto que hoy requiere 4 a 8 horas de relevamiento manual se documenta en menos de una hora. Sin refilmar, sin remarcar: analizás el video una vez y el sistema genera todos los entregables." },
+  { icon: ShieldCheck, title: "Privacidad e Instalación sin Fricción", description: "Se instala en la PC del ingeniero. El video se procesa localmente y nunca sale de la planta. Sin servidor, sin nube, sin aprobación de IT corporativo." },
 ];
 
 const Features = () => {
@@ -46,11 +22,11 @@ const Features = () => {
             Características
           </span>
           <h2 className="text-4xl md:text-5xl font-bold font-heading mt-4 mb-6">
-            Potencia la Productividad de tus Ingenieros{" "}
-            <span className="gradient-text">4X</span>
+            Todo el estudio del puesto,{" "}
+            <span className="gradient-text">a partir de un video</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Deja atrás Excel y cronómetros. Nuestra plataforma impulsada por IA elimina la necesidad de recolección manual de datos.
+            Kaizen Lab reemplaza el cronómetro y la planilla por análisis automático del video del puesto.
           </p>
         </div>
 
