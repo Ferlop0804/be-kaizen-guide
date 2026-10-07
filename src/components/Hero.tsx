@@ -99,8 +99,6 @@ const Hero = () => {
               Ver Video
             </Button>
           </div>
-
-          </div>
         </div>
       </div>
 
