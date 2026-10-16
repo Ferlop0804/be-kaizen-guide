@@ -1,10 +1,9 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import PricingComparison from "@/components/PricingComparison";
 import AfterApplying from "@/components/AfterApplying";
 import { Button } from "@/components/ui/button";
-import { Check, ChevronRight, Rocket, Star, ShieldCheck } from "lucide-react";
+import { Check, ChevronRight, Rocket, ShieldCheck } from "lucide-react";
 import DemoRequestModal from "@/components/DemoRequestModal";
 import ContactSalesModal from "@/components/ContactSalesModal";
 
@@ -17,114 +16,60 @@ const Plans = () => {
 
   const plans = [
     {
-      name: "Design Partner Program",
-      icon: Rocket,
-      badge: "Cupos muy limitados",
-      note:
-        "Buscamos únicamente entre 3 y 5 empresas industriales para participar en la validación de la primera versión de Be Kaizen. Los participantes influirán directamente en el desarrollo del producto y accederán a beneficios exclusivos como Founding Customers.",
-      priceLabel: "Sin costo durante el piloto",
-      priceSuffix: "Programa exclusivo de validación de 90 días.",
-      description: null as string | null,
-      features: [
-        "Programa de 90 días",
-        "1 planta · 1 línea de producción",
-        "Hasta 5 estudios activos",
-        "Hasta 3 horas de video durante el piloto",
-        "Dashboard Lean",
-        "Yamazumi",
-        "Work Combination Table",
-        "Work Instructions",
-        "IA para recomendaciones",
-        "Capacitación inicial",
-        "Soporte directo del equipo fundador",
-        "Reuniones periódicas de seguimiento",
-        "Fine-tuning basado en su feedback",
-      ],
-      cta: "Aplicar al Programa",
-      action: openDemo,
-      variant: "hero" as const,
-      footnote: "Sin compromiso de compra al finalizar el piloto.",
-      highlighted: true,
+      name: 'Design Partner', icon: Rocket, badge: 'Solo 5 cupos', note: null,
+      priceLabel: 'USD 990 / 90 días', priceSuffix: 'Al renovar, los USD 990 se descuentan del plan Starter.',
+      description: 'Para las primeras 5 empresas que quieran validar el producto junto al equipo fundador. Acceso completo a cambio de feedback estructurado.' as string | null,
+      features: ['Hasta 10 puestos', 'Videos ilimitados', 'WIS con foto o esqueleto por paso', 'Estudio de tiempos (TO · TN · TE)', 'Hoja Combinada SWCT', 'Yamazumi con línea de Takt', 'Comparativo antes/después de mejoras Kaizen', 'Soporte directo del equipo fundador', 'Reuniones periódicas de seguimiento'],
+      cta: 'Aplicar al programa', action: openDemo, variant: "hero" as const,
+      footnote: 'NDA disponible desde la primera conversación.' as string | null, highlighted: true,
     },
     {
-      name: "Founding Customer",
-      icon: Star,
-      badge: "Primeros clientes",
-      note: null,
-      priceLabel: "Precio preferencial exclusivo para empresas que completen exitosamente el Design Partner Program.",
-      priceSuffix: "Disponible únicamente para los primeros clientes de Be Kaizen.",
-      description:
-        "Para empresas que completaron exitosamente el programa Design Partner y desean incorporar Be Kaizen a su operación.",
-      features: [
-        "1 planta",
-        "Hasta 10 procesos activos",
-        "Hasta 10 usuarios",
-        "Hasta 100 videos por año",
-        "Dashboard Lean",
-        "Yamazumi",
-        "Work Combination Table",
-        "Work Instructions",
-        "IA para recomendaciones",
-        "Actualizaciones incluidas",
-        "Soporte prioritario",
-      ],
-      cta: "Solicitar información",
-      action: openDemo,
-      variant: "outline" as const,
-      footnote: "Tarifa Founding congelada mientras el contrato siga activo.",
-      highlighted: false,
+      name: 'Starter', icon: null, badge: null, note: null,
+      priceLabel: 'USD 4.900 / año', priceSuffix: 'Facturación anual adelantada.',
+      description: 'Para plantas que quieren documentar una línea de producción completa.' as string | null,
+      features: ['Hasta 10 puestos', 'Videos ilimitados', 'WIS con foto o esqueleto por paso', 'Estudio de tiempos (TO · TN · TE)', 'Hoja Combinada SWCT', 'Yamazumi con línea de Takt', 'Comparativo antes/después de mejoras Kaizen', 'Soporte por email'],
+      cta: 'Solicitar demo', action: openDemo, variant: "outline" as const,
+      footnote: null as string | null, highlighted: false,
     },
     {
-      name: "Professional",
-      icon: null,
-      badge: null,
-      note: null,
-      priceLabel: "Precio personalizado",
-      priceSuffix: "según plantas y volumen",
-      description:
-        "Para empresas que desean escalar la mejora continua en múltiples líneas de producción.",
-      features: [
-        "Hasta 3 plantas",
-        "Hasta 50 procesos activos",
-        "Hasta 30 usuarios",
-        "Hasta 500 videos por año",
-        "Dashboard ejecutivo",
-        "Benchmark entre líneas",
-        "Exportaciones avanzadas",
-        "API (Roadmap)",
-        "Soporte prioritario",
-      ],
-      cta: "Hablar con Ventas",
-      action: openSales,
-      variant: "outline" as const,
-      footnote: null,
-      highlighted: false,
+      name: 'Starter Plus', icon: null, badge: null, note: null,
+      priceLabel: 'USD 6.900 / año', priceSuffix: 'Facturación anual adelantada.',
+      description: 'Para plantas con entre 11 y 20 puestos activos.' as string | null,
+      features: ['Hasta 20 puestos', 'Todo lo incluido en Starter', 'Soporte prioritario'],
+      cta: 'Solicitar demo', action: openDemo, variant: "outline" as const,
+      footnote: null as string | null, highlighted: false,
     },
     {
-      name: "Enterprise",
-      icon: null,
-      badge: null,
-      note: null,
-      priceLabel: "Consultar",
-      priceSuffix: "propuesta a medida",
-      description: "Para grandes organizaciones industriales.",
-      features: [
-        "Plantas ilimitadas",
-        "Procesos ilimitados",
-        "Usuarios ilimitados",
-        "Videos ilimitados",
-        "Integraciones ERP / MES",
-        "Implementación dedicada",
-        "SSO",
-        "SLA empresarial",
-        "Roadmap conjunto",
-        "Customer Success dedicado",
-      ],
-      cta: "Contactar Ventas",
-      action: openSales,
-      variant: "outline" as const,
-      footnote: null,
-      highlighted: false,
+      name: 'Starter Pro', icon: null, badge: null, note: null,
+      priceLabel: 'USD 8.500 / año', priceSuffix: 'Facturación anual adelantada.',
+      description: 'Para plantas con entre 21 y 29 puestos activos.' as string | null,
+      features: ['Hasta 29 puestos', 'Todo lo incluido en Starter', 'Soporte prioritario'],
+      cta: 'Solicitar demo', action: openDemo, variant: "outline" as const,
+      footnote: null as string | null, highlighted: false,
+    },
+    {
+      name: 'Professional', icon: null, badge: null, note: null,
+      priceLabel: 'USD 9.900 / año', priceSuffix: 'Facturación anual adelantada.',
+      description: 'Para plantas que necesitan documentar hasta 30 puestos en una o más líneas.' as string | null,
+      features: ['Hasta 30 puestos', 'Videos ilimitados', 'Todo lo incluido en Starter', 'Balance de línea y Headcount óptimo', 'Soporte prioritario'],
+      cta: 'Solicitar demo', action: openDemo, variant: "outline" as const,
+      footnote: null as string | null, highlighted: false,
+    },
+    {
+      name: 'Business', icon: null, badge: null, note: null,
+      priceLabel: 'USD 14.900 / año', priceSuffix: 'Facturación anual adelantada.',
+      description: 'Para plantas que necesitan documentar toda su operación sin límite de puestos.' as string | null,
+      features: ['Puestos ilimitados en 1 planta', 'Videos ilimitados', 'Todo lo incluido en Professional', 'Soporte prioritario con SLA'],
+      cta: 'Solicitar demo', action: openDemo, variant: "outline" as const,
+      footnote: null as string | null, highlighted: false,
+    },
+    {
+      name: 'Enterprise', icon: null, badge: null, note: null,
+      priceLabel: 'A cotizar', priceSuffix: 'Propuesta a medida.',
+      description: 'Para organizaciones con múltiples plantas o requerimientos especiales de implementación.' as string | null,
+      features: ['Plantas ilimitadas', 'Puestos ilimitados', 'Implementación dedicada', 'Capacitación on-site', 'Soporte con SLA empresarial'],
+      cta: 'Contactar ventas', action: openSales, variant: "outline" as const,
+      footnote: null as string | null, highlighted: false,
     },
   ];
 
@@ -140,16 +85,10 @@ const Plans = () => {
               Planes
             </span>
             <h1 className="mx-auto mt-4 max-w-4xl font-heading text-4xl font-bold text-balance md:text-5xl lg:text-6xl">
-              Elija el nivel de adopción que mejor se adapte a su{" "}
-              <span className="gradient-text">organización</span>
+              Planes y <span className="gradient-text">precios</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
-              Desde programas de validación colaborativa hasta implementaciones Enterprise para
-              múltiples plantas.
-            </p>
-            <p className="mx-auto mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-4 py-2 text-sm text-muted-foreground">
-              <ShieldCheck className="h-4 w-4 text-primary" aria-hidden="true" />
-              Confidencialidad y NDA disponibles desde la primera conversación
+              Precio anual. Sin límite de videos. Todo se procesa en la PC de la planta.
             </p>
           </div>
         </section>
@@ -239,7 +178,19 @@ const Plans = () => {
           </div>
         </section>
 
-        <PricingComparison />
+        <section className="container mx-auto px-6 py-16">
+          <div className="mx-auto max-w-4xl space-y-6 text-center">
+            <p className="rounded-2xl border border-border bg-card p-8 text-lg text-foreground">
+              Todos los planes incluyen las mismas funcionalidades. La diferencia entre planes es
+              únicamente la cantidad de puestos activos. Sin límite de videos en ningún plan.
+            </p>
+            <p className="inline-flex items-start gap-2 text-sm text-muted-foreground">
+              <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+              Be Kaizen es una aplicación de escritorio. El video se procesa en la PC del ingeniero
+              y nunca sale de la planta. No requiere conexión a internet.
+            </p>
+          </div>
+        </section>
 
         {/* Microcopy final */}
         <section className="container mx-auto px-6 pb-24">
