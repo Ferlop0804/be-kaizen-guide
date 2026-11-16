@@ -73,6 +73,15 @@ const Plans = () => {
     },
   ];
 
+  const services = [
+    { name: 'Diagnóstico Inicial', badge: 'PUERTA DE ENTRADA', price: 'USD 1.350', sub: 'Pago único · 1 jornada en planta', highlighted: false, cta: 'Solicitar diagnóstico',
+      features: ['Relevamiento y filmación de 3 a 5 puestos manuales', 'Hojas de Instrucción de Trabajo (WIS) con fotos por paso', 'Estudio de tiempos estándar (TO / TN / TE) y variabilidad', 'Gráfico Yamazumi y detección de cuellos de botella', 'Sin detener la producción ni asignar personal propio'] },
+    { name: 'Relevamiento de Línea', badge: 'MÁS ELEGIDO', price: 'USD 2.700', sub: 'Pago único · Sector o línea completa', highlighted: true, cta: 'Cotizar línea',
+      features: ['Análisis integral de 8 a 12 puestos consecutivos', 'Balanceo de línea completo frente al Takt Time objetivo', 'Cuantificación exacta de ahorro de segundos y capacidad', 'Informe ejecutivo para Gerencia y Producción', 'Bonificación parcial al contratar licencia anual'] },
+    { name: 'Kaizen Continuo', badge: 'ACOMPAÑAMIENTO MENSUAL', price: 'USD 1.600 / mes', sub: 'Mínimo 3 meses · Ingeniería externa', highlighted: false, cta: 'Consultar disponibilidad',
+      features: ['2 visitas presenciales por mes a planta', 'Análisis y estandarización de hasta 6 puestos por mes', 'Seguimiento comparativo Antes / Después de mejoras', '1 licencia de Be Kaizen incluida durante el servicio', 'Soporte directo para auditorías de calidad y clientes'] },
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -176,6 +185,59 @@ const Plans = () => {
               </article>
             ))}
           </div>
+        </section>
+
+
+        {/* Servicios de ingeniería */}
+        <section className="container mx-auto px-6 pb-8 pt-16" aria-labelledby="servicios-title">
+          <div className="mx-auto mb-12 max-w-3xl text-center">
+            <h2 id="servicios-title" className="font-heading text-3xl font-bold md:text-4xl">
+              Servicios de Ingeniería <span className="gradient-text">Llave en Mano</span>
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              ¿No tenés equipo dedicado de tiempos y métodos? Nosotros vamos a tu planta, relevamos los puestos y te entregamos el diagnóstico completo.
+            </p>
+          </div>
+          <div className="mx-auto grid max-w-6xl items-start gap-6 md:grid-cols-3">
+            {services.map((s) => (
+              <article
+                key={s.name}
+                className={`relative flex h-full flex-col rounded-2xl p-8 transition-all duration-300 ${
+                  s.highlighted
+                    ? "border-2 border-primary bg-card shadow-glow-sm hover:-translate-y-1 hover:shadow-glow"
+                    : "border border-border bg-card hover:-translate-y-1 hover:border-primary/50"
+                }`}
+              >
+                <div className="absolute -top-3 left-8">
+                  <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold tracking-wider ${
+                    s.highlighted ? "bg-primary text-primary-foreground" : "border border-primary/40 bg-background text-primary"
+                  }`}>{s.badge}</span>
+                </div>
+                <h3 className="mt-2 font-heading text-xl font-bold">{s.name}</h3>
+                <div className="my-6 border-y border-border py-5">
+                  <div className="font-heading text-2xl font-bold text-foreground">{s.price}</div>
+                  <div className="mt-1 text-sm text-muted-foreground">{s.sub}</div>
+                </div>
+                <ul className="mb-8 space-y-3">
+                  {s.features.map((f) => (
+                    <li key={f} className="flex items-start gap-3">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                      <span className="text-sm leading-relaxed text-foreground">{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-auto">
+                  <Button type="button" variant={s.highlighted ? "hero" : "outline"} size="lg" className="w-full" onClick={openDemo}>
+                    {s.cta}
+                    <ChevronRight className="h-5 w-5" />
+                  </Button>
+                </div>
+              </article>
+            ))}
+          </div>
+          <p className="mx-auto mt-10 max-w-3xl text-center text-sm text-muted-foreground">
+            Todos los servicios incluyen Acuerdo de Confidencialidad (NDA) previo al ingreso a planta y procesamiento local sin subida de videos a la nube. Valores expresados en USD + IVA (viáticos incluidos en Zona Norte / GBA).
+          </p>
         </section>
 
         <section className="container mx-auto px-6 py-16">
